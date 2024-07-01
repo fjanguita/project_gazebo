@@ -1,13 +1,19 @@
 {
-    "world_name": "empty",
+    "world_name": "my_empty",
     "drones": [
         {
             "model_type": "quadrotor_base",
             "model_name": "drone0",
+            "payload": [
+              {
+                "model_name": "front_camera",
+                "model_type": "hd_camera"
+              }
+            ],
             "xyz": [
-                1.0,
-                1.0,
-                0.3
+                -4.13,
+                0.17,
+                0.54
             ],
             "rpy": [
                 0,

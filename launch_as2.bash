@@ -47,6 +47,9 @@ source utils/tools.bash
 # Shift optional args
 shift $((OPTIND -1))
 
+export GZ_SIM_RESOURCE_PATH=$PWD/worlds:$GZ_SIM_RESOURCE_PATH
+export GZ_SIM_RESOURCE_PATH=$PWD/models:$GZ_SIM_RESOURCE_PATH
+
 ## DEFAULTS
 behavior_tree=${behavior_tree:="false"}
 swarm=${swarm:="false"}
