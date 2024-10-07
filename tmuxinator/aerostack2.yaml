@@ -23,6 +23,7 @@ windows:
             namespace:=<%= drone_namespace %>
             platform_config_file:=config/config.yaml
             simulation_config_file:=<%= simulation_config_file %>
+            control_modes_file:=config/control_modes.yaml
 
   # Basic Robotics Functions
   - basics_robotics_functions:
@@ -36,8 +37,8 @@ windows:
         - ros2 launch as2_motion_controller controller_launch.py
             namespace:=<%= drone_namespace %>
             config_file:=config/config.yaml
-            plugin_name:=pid_speed_controller
-            plugin_config_file:=config/pid_speed_controller.yaml
+            plugin_name:=differential_flatness_controller
+            plugin_config_file:=config/differential_flatness_controller.yaml
 
   # Behaviors
   - behaviors:

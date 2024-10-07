@@ -43,7 +43,7 @@ import rclpy
 TAKE_OFF_HEIGHT = 1.0  # Height in meters
 TAKE_OFF_SPEED = 1.0  # Max speed in m/s
 SLEEP_TIME = 0.5  # Sleep time between behaviors in seconds
-SPEED = 1.0  # Max speed in m/s
+SPEED = 3.0  # Max speed in m/s
 HEIGHT = 1.0  # Height in meters
 DIM = 2.0
 PATH = [

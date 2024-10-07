@@ -14,6 +14,12 @@ drones_namespace_comma=""
 launch_simulation="true"
 use_gnome="false"
 
+# Add models to Gazebo sources
+export GZ_SIM_RESOURCE_PATH=$PWD/worlds:$GZ_SIM_RESOURCE_PATH
+export GZ_SIM_RESOURCE_PATH=$PWD/models:$GZ_SIM_RESOURCE_PATH
+export GZ_SIM_SYSTEM_PLUGIN_PATH=$PWD/plugin/install/lib:$GZ_SIM_SYSTEM_PLUGIN_PATH
+export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/aerostack2_ws/install/as2_gazebo_assets/lib:$GZ_SIM_SYSTEM_PLUGIN_PATH
+
 # Arg parser
 while getopts "mn:sg" opt; do
   case ${opt} in
