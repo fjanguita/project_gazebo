@@ -4,7 +4,7 @@ origin:
     longitude: -3.6898277
     altitude: 100.0
 drones:
-  - model_type: "x500"
+  - model_type: "quadrotor_base"
     model_name: "drone0"
     flight_time: 60
     xyz:

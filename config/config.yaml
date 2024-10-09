@@ -32,8 +32,8 @@
       takeoff_plugin_name: "takeoff_plugin_trajectory"
   LandBehavior:
     ros__parameters:
-      land_plugin_name: "land_plugin_speed"
-      # land_plugin_name: "land_plugin_trajectory"
+      # land_plugin_name: "land_plugin_speed"
+      land_plugin_name: "land_plugin_trajectory"
   GoToBehavior:
     ros__parameters:
       # go_to_plugin_name: "go_to_plugin_position"
