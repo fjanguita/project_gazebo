@@ -13,6 +13,13 @@ drones:
       - 0.3
     enable_acro_control: true
     enable_velocity_control: false
+  # - model_type: "quadrotor_base"
+  #   model_name: "drone1"
+  #   flight_time: 60
+  #   xyz:
+  #     - 1.0
+  #     - 0.0
+  #     - 0.3
     # payload:
     #   - model_type: "air_pressure"
     #     model_name: "presion"  

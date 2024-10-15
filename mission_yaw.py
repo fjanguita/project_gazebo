@@ -36,23 +36,34 @@ __license__ = 'BSD-3-Clause'
 
 import argparse
 from time import sleep
+from math import pi
 
 from as2_python_api.drone_interface import DroneInterface
 import rclpy
 
-TAKE_OFF_HEIGHT = 1.0  # Height in meters
+TAKE_OFF_HEIGHT = 2.0  # Height in meters
 TAKE_OFF_SPEED = 1.0  # Max speed in m/s
 SLEEP_TIME = 5.0  # Sleep time between behaviors in seconds
 SPEED = 3.0  # Max speed in m/s
-HEIGHT = 1.0  # Height in meters
-DIM = 3.0
+HEIGHT = 2.0  # Height in meters
+DIM = 2.0
 PATH = [
-    [-DIM, DIM, HEIGHT],
-    [-DIM, -DIM, HEIGHT],
-    [DIM, -DIM, HEIGHT],
-    [DIM, DIM, HEIGHT]
+    [0.0, 0.0, HEIGHT, SPEED, pi / 4],
+    [0.0, 0.0, HEIGHT, SPEED, pi / 2],
+    [0.0, 0.0, HEIGHT, SPEED, 3 * pi / 4],
+    [0.0, 0.0, HEIGHT, SPEED, pi],
+    [0.0, 0.0, HEIGHT, SPEED, 5 * pi / 4],
+    [0.0, 0.0, HEIGHT, SPEED, 3 * pi / 2],
+    [0.0, 0.0, HEIGHT, SPEED, 7 * pi / 4],
+    [0.0, 0.0, HEIGHT, SPEED, 2 * pi]
 ]
-LAND_SPEED = 2.0  # Max speed in m/s
+# PATH = [
+#     [0.0, 0.0, HEIGHT, SPEED, pi / 2],
+#     [0.0, 0.0, HEIGHT, SPEED, pi],
+#     [0.0, 0.0, HEIGHT, SPEED, 3 * pi / 2],
+#     [0.0, 0.0, HEIGHT, SPEED, 2 * pi]
+# ]
+LAND_SPEED = 1.5  # Max speed in m/s
 
 
 def drone_start(drone_interface: DroneInterface) -> bool:
@@ -91,20 +102,10 @@ def drone_run(drone_interface: DroneInterface) -> bool:
     """
     print('Run mission')
 
-    # # Go to path with keep yaw
-    # for goal in PATH:
-    #     print(f'Go to with keep yaw {goal}')
-    #     success = drone_interface.go_to.go_to_point(goal, speed=SPEED)
-    #     print(f'Go to success: {success}')
-    #     if not success:
-    #         return success
-    #     print('Go to done')
-    #     sleep(SLEEP_TIME)
-
-    # Go to path facing
+    # Go to path with keep yaw
     for goal in PATH:
-        print(f'Go to with path facing {goal}')
-        success = drone_interface.go_to.go_to_point_path_facing(goal, speed=SPEED)
+        print(f'Go to with yaw {goal}')
+        success = drone_interface.go_to.go_to_with_yaw(goal[0], goal[1], goal[2], goal[3], goal[4])
         print(f'Go to success: {success}')
         if not success:
             return success

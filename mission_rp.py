@@ -45,14 +45,16 @@ TAKE_OFF_SPEED = 1.0  # Max speed in m/s
 SLEEP_TIME = 5.0  # Sleep time between behaviors in seconds
 SPEED = 3.0  # Max speed in m/s
 HEIGHT = 1.0  # Height in meters
-DIM = 3.0
+DIM = 2.0
 PATH = [
-    [-DIM, DIM, HEIGHT],
-    [-DIM, -DIM, HEIGHT],
-    [DIM, -DIM, HEIGHT],
-    [DIM, DIM, HEIGHT]
+    [-DIM, 0.0, HEIGHT],
+    [DIM, 0.0, HEIGHT],
+    [0.0, 0.0, HEIGHT],
+    [0.0, -DIM, HEIGHT],
+    [0.0, DIM, HEIGHT],
+    [0.0, 0.0, HEIGHT],
 ]
-LAND_SPEED = 2.0  # Max speed in m/s
+LAND_SPEED = 0.5  # Max speed in m/s
 
 
 def drone_start(drone_interface: DroneInterface) -> bool:
@@ -91,20 +93,10 @@ def drone_run(drone_interface: DroneInterface) -> bool:
     """
     print('Run mission')
 
-    # # Go to path with keep yaw
-    # for goal in PATH:
-    #     print(f'Go to with keep yaw {goal}')
-    #     success = drone_interface.go_to.go_to_point(goal, speed=SPEED)
-    #     print(f'Go to success: {success}')
-    #     if not success:
-    #         return success
-    #     print('Go to done')
-    #     sleep(SLEEP_TIME)
-
-    # Go to path facing
+    # Go to path with keep yaw
     for goal in PATH:
-        print(f'Go to with path facing {goal}')
-        success = drone_interface.go_to.go_to_point_path_facing(goal, speed=SPEED)
+        print(f'Go to with keep yaw {goal}')
+        success = drone_interface.go_to.go_to_point(goal, speed=SPEED)
         print(f'Go to success: {success}')
         if not success:
             return success
